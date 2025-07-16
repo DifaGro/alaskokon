@@ -4,8 +4,10 @@ services:
   webdesa:
     image: php:8.2-apache
     container_name: webdesa
+    build:
+      context: .
     volumes:
-      - /app:/var/www/html
+      - .:/var/www/html
     ports:
       - "3000:80"
     depends_on:
