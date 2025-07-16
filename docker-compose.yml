@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  webdesa:
+    image: php:8.2-apache
+    container_name: webdesa
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "3000:80"
+    depends_on:
+      - mysql
+    networks:
+      - webnet
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rahasia
+      MYSQL_DATABASE: webdesa
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - webnet
+
+volumes:
+  db_data:
+
+networks:
+  webnet:
