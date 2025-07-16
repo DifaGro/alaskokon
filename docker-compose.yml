@@ -14,6 +14,7 @@ services:
       - mysql
     networks:
       - webnet
+      - coolify-shared
 
   mysql:
     image: mysql:8
@@ -26,6 +27,7 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - webnet
+      - coolify-shared
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -41,9 +43,12 @@ services:
       - mysql
     networks:
       - webnet
-
+      - coolify-shared
+  
 volumes:
   db_data:
 
 networks:
   webnet:
+   coolify-shared:
+      external: true
