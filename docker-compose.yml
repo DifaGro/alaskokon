@@ -15,6 +15,18 @@ services:
     networks:
       - webnet
 
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rahasia
+      MYSQL_DATABASE: webdesa
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - webnet
+
 volumes:
   db_data:
 
