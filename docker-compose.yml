@@ -5,7 +5,7 @@ services:
     image: php:8.2-apache
     container_name: webdesa
     volumes:
-      - ${APP_DIR:-.}:/var/www/html
+      - /app:/var/www/html
     ports:
       - "3000:80"
     depends_on:
