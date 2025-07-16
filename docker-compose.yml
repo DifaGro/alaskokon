@@ -14,41 +14,9 @@ services:
       - mysql
     networks:
       - webnet
-      - coolify-shared
 
-  mysql:
-    image: mysql:8
-    container_name: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rahasia
-      MYSQL_DATABASE: webdesa
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - webnet
-      - coolify-shared
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: rahasia
-    ports:
-      - "8080:80"
-    depends_on:
-      - mysql
-    networks:
-      - webnet
-      - coolify-shared
-  
 volumes:
   db_data:
 
 networks:
   webnet:
-   coolify-shared:
-      external: true
